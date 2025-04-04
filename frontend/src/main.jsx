@@ -5,11 +5,14 @@ import "./index.css";
 import App from "./App.jsx";
 import { Toaster } from "react-hot-toast";
 
-
-import Dashboard from "./Components/AdminPanel/Dashboard.jsx";
+// UserPanel
 import Userlayout from "./Userlayout.jsx";
-import Adminlayout from "./Adminlayout.jsx";
 import Home from "./Components/User/Home.jsx";
+import Login from "./Components/User/Login.jsx";
+import Register from "./Components/User/Register.jsx";
+// AdminPanel
+import Adminlayout from "./Adminlayout.jsx";
+import Dashboard from "./Components/AdminPanel/Dashboard.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +32,14 @@ const router = createBrowserRouter([
         children: [
           { path: "dashboard", element: <Dashboard /> }
         ]
+      },
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/register",
+        element: <Register />
       }
     ]
   }
