@@ -5,11 +5,12 @@ import Footer from "./Components/User/Footer.jsx";
 
 const UserLayout = () => {
   return (
-    <>
+    <div className="w-full h-full">
     <Header />
       <Outlet /> 
     <Footer/>
-    </>
+    
+    </div>
   );
 };
 
