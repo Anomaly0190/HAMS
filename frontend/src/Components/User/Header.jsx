@@ -17,7 +17,7 @@ const Header = () => {
         </div>
 
         {/* for login */}
-        <div className="border-purple-600 border-2 py-1.5 px-3 cursor-pointer rounded-xl ">
+        <div className=" py-1.5 px-3 cursor-pointer rounded-xl bg-blue-600 text-white ">
           <Link to="/login" >Login</Link>
         </div>
         {/* <div
