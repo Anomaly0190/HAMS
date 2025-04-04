@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import patientimage from "/patientimage.png";
+import logo1 from "/logo1.jpg";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <>
-      <div className="w-[98vw] h-[8vh] rounded-xl shadow-2xl mt-1 flex justify-between items-center px-6 mx-auto border-gray-400">
-        <div className="cursor-pointer">Logo</div>
+      <div className="w-[98vw] h-[10vh] rounded-xl shadow-2xl mt-1 flex justify-between items-center px-6 mx-auto border-gray-400">
+        <div className="cursor-pointer ">
+          <img src={logo1} alt="" className="h-[10vh] " />
+        </div>
 
         <div className="flex gap-3">
           <Link to="/">Home</Link>
