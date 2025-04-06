@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="w-[100vw] ">
 
-      <section class=" py-20 px-4  w-full h-[90vh]">
+      <section class=" py-20 px-4  w-full h-[88vh]">
         <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-10 mx-auto w-[86%]">
           <div class="md:w-1/2 text-center md:text-left">
             <h1 class="text-4xl md:text-5xl font-bold text-blue-800 leading-tight mb-6">
@@ -25,11 +25,11 @@ const Home = () => {
             </Link>
           </div>
 
-          <div class=" shadow-lg overflow-hidden">
+          <div class=" ">
             <img
               src={docimage}
               alt="Healthcare Illustration"
-              class="w-[28vw] rounded-2xl shadow-xl overflow-hidden"
+              class="w-[28vw] rounded-2xl shadow-lg shadow-red-400"
             />
           </div>
         </div>

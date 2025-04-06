@@ -8,7 +8,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="w-[98vw] h-[10vh] rounded-xl shadow-2xl mt-1 flex justify-between items-center px-6 mx-auto border-gray-400">
+      <div className="w-[98vw] h-[12vh] rounded-xl  mt-2 border-t-2 border-blue-300 flex justify-between items-center px-6 mx-auto  shadow-blue-500 shadow-lg">
         <div className="cursor-pointer ">
           <img src={logo1} alt="" className="h-[10vh] " />
         </div>
