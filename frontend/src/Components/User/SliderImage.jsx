@@ -18,7 +18,7 @@ function SliderImage() {
     <div className="slider-container ml-2 overflow-hidden">
       <Slider {...settings}>
         <div>
-          <div className="w-[98vw]  overflow-hidden">
+          <div className="w-[98vw]  overflow-hidden my-2">
             <img src={slider1} alt="" className="w-full rounded-lg " />
           </div>
         </div>

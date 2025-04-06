@@ -2,8 +2,8 @@ import React from 'react'
 
 const Register = () => {
   return (
-    <div>
-      This is register page
+    <div className='h-[100vh]'>This is Registerpage
+      
     </div>
   )
 }

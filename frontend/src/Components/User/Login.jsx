@@ -70,7 +70,7 @@ const Login = () => {
                     Password
                   </label>
                   <div className="">
-                    <label className="w-full input input-bordered flex items-center gap-2 border-1 border-black focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-400 bg-white text-black">
+                    <label className="w-full input input-bordered flex items-center gap-2 border-1 border-black focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-400 bg-white text-black ">
                       <svg
                         className="h-[1em] opacity-50"
                         xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@ const Login = () => {
                     ))}
                   </select>
                 </div>
-                <div className="w-full flex flex-row-reverse my-4 text-sm">
+                <div className="w-full flex flex-row-reverse my-4 text-[1rem]">
                   <h1>Don't have an Account ? <span className="text-blue-500">
                     <Link to="/register">Register</Link>
                     </span></h1>
