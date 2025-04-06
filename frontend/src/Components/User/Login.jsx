@@ -11,12 +11,12 @@ const Login = () => {
   return (
     <>
       <div className="min-h-screen w-[100vw] flex justify-center items-center bg-gray-50">
-        <div className="w-[70vw] h-4/5 rounded-lg shadow-2xl  flex overflow-hidden bg-white text-black">
-          <div className="w-1/2">
+        <div className="w-[64vw] h-4/5 rounded-lg shadow-2xl  flex overflow-hidden bg-white text-black">
+          <div className="w-[35vw]">
             <img src={loginside} alt="sideimage" />
           </div>
           <div className="w-1/2 h-full">
-            <div className="bg-white py-4 px-8 ">
+            <div className="bg-white py-4 px-10 ">
               <h2 className="text-3xl font-semibold mb-6 mt-4 mx-20">
                 <span className="text-[#0A7ABF]">Welcome</span>
                 <span className="text-[#333333]">Back</span>
