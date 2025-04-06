@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import docimage from "/docimage.jpg";
+import SliderImage from "./SliderImage.jsx";
 const Home = () => {
   return (
-    <>
-      <section class=" py-20 px-4  w-full">
+    <div className="w-[100vw] ">
+
+      <section class=" py-20 px-4  w-full h-[90vh]">
         <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-10 mx-auto w-[86%]">
           <div class="md:w-1/2 text-center md:text-left">
             <h1 class="text-4xl md:text-5xl font-bold text-blue-800 leading-tight mb-6">
@@ -27,12 +29,14 @@ const Home = () => {
             <img
               src={docimage}
               alt="Healthcare Illustration"
-              class="w-[28vw] rounded-2xl shadow-lg overflow-hidden"
+              class="w-[28vw] rounded-2xl shadow-xl overflow-hidden"
             />
           </div>
         </div>
       </section>
-    </>
+    <SliderImage />
+
+    </div>
   );
 };
 

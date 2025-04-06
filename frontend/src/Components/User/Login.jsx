@@ -99,7 +99,7 @@ const Login = () => {
                         className=" w-full focus:outline-none"
                       />
                       {
-                        showPassword?<FaEyeSlash className="cursor-pointer text-xl" onClick={()=>setShowpassword(prev=>!prev)}/>:<FaEye className="cursor-pointer text-xl" onClick={()=>setShowpassword(prev=>!prev)}/>
+                        showPassword?<FaEyeSlash className="cursor-pointer text-xl mr-2" onClick={()=>setShowpassword(prev=>!prev)}/>:<FaEye className="cursor-pointer text-xl mr-2" onClick={()=>setShowpassword(prev=>!prev)}/>
                       }
                       
                     </label>
