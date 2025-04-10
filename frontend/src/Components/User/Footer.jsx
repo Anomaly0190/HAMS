@@ -1,75 +1,74 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <>
- 
-      <footer class="bg-white text-gray-800  mt-4 border-t-1 ">
-        <div class="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h2 class="text-2xl font-bold text-blue-600">HAMs</h2>
-              <p class="mt-2 text-[18px] text-gray-600">
-                Your trusted partner for easy and efficient healthcare
-                appointments.
-              </p>
-            </div>
-
-            <div>
-              <h3 class="text-lg font-semibold text-gray-700 mb-3">
-                Quick Links
-              </h3>
-              <ul class="space-y-2 text-[17px]">
-                <li>
-                  <Link to="#" class="hover:text-blue-600 transition">
-                    Home
-                  </Link>
-                </li>
-               
-                <li>
-                  <Link to="#" class="hover:text-blue-600 transition">
-                    Find a Doctor
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#" class="hover:text-blue-600 transition">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 class="text-lg font-semibold text-gray-700 mb-3">Services</h3>
-              <ul class="space-y-2 text-[17px]">
-                <li>
-                  <Link to="#" class="hover:text-blue-600 transition">
-                    Doctor Booking
-                  </Link>
-                </li>
-             
-                <li>
-                  <Link to="#" class="hover:text-blue-600 transition">
-                    Medical History
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 class="text-lg font-semibold text-gray-700 mb-3">Contact</h3>
-              <p class="text-[17px] text-gray-600">Email: support@hams.com</p>
-              <p class="text-[17px] text-gray-600">Phone: 977 9812821234</p>
-              <p class="text-[17px] text-gray-600">Location: Kathmandu, Nepal</p>
-            </div>
+    <footer className="bg-white text-gray-800 mt-4 border-t">
+      <div className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
+          {/* Logo and description */}
+          <div>
+            <h2 className="text-2xl font-bold text-blue-600">HAMs</h2>
+            <p className="mt-2 text-[18px] text-gray-600">
+              Your trusted partner for easy and efficient healthcare
+              appointments.
+            </p>
           </div>
 
-          <div class="border-t border-gray-200 mt-10 pt-6 text-[17px] text-gray-500 text-center">
-            © {new Date().getFullYear()} HAMs. All rights reserved.
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-700 mb-3">Quick Links</h3>
+            <ul className="space-y-2 text-[17px]">
+              <li>
+                <Link to="#" className="hover:text-blue-600 transition">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="hover:text-blue-600 transition">
+                  Find a Doctor
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="hover:text-blue-600 transition">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-700 mb-3">Services</h3>
+            <ul className="space-y-2 text-[17px]">
+              <li>
+                <Link to="#" className="hover:text-blue-600 transition">
+                  Doctor Booking
+                </Link>
+              </li>
+              <li>
+                <Link to="#" className="hover:text-blue-600 transition">
+                  Medical History
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-700 mb-3">Contact</h3>
+            <p className="text-[17px] text-gray-600">Email: support@hams.com</p>
+            <p className="text-[17px] text-gray-600">Phone: 977 9812821234</p>
+            <p className="text-[17px] text-gray-600">Location: Kathmandu, Nepal</p>
           </div>
         </div>
-      </footer>
-    </>
+
+        {/* Footer Bottom */}
+        <div className="border-t border-gray-200 mt-10 pt-6 text-[17px] text-gray-500 text-center">
+          © {new Date().getFullYear()} HAMs. All rights reserved.
+        </div>
+      </div>
+    </footer>
   );
 };
 
