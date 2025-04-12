@@ -13,8 +13,8 @@ const Login = () => {
   return (
     <>
       <div className="min-h-screen w-full flex justify-center items-center bg-gray-50">
-        <div className="w-[90vw] md:w-[64vw] h-auto md:h-4/5 rounded-lg shadow-2xl flex flex-col md:flex-row overflow-hidden bg-white text-black">
-          <div className="w-full md:w-[35vw]">
+        <div className="w-[90vw] md:w-[64vw] h-auto md:h-4/5 rounded-lg shadow-2xl flex md:flex-row overflow-hidden bg-white text-black">
+          <div className="w-full hidden md:block md:w-[35vw]">
             <img
               src={loginside}
               alt="sideimage"
@@ -118,12 +118,12 @@ const Login = () => {
                     </label>
                   </div>
                 </div>
-                <div className="flex w-full my-4 flex-col sm:flex-row items-start sm:items-center">
-                  <label>Are you a</label>
+                <div className="flex w-full my-4  sm:flex-row items-center">
+                  <label className="mr-2">Are you a</label>
                   <select
                     name=""
                     id=""
-                    className="ml-0 sm:ml-3 mt-2 sm:mt-0 outline-2 rounded-sm border border-gray-300 p-1"
+                    className="ml-0 sm:ml-2 mt-2 sm:mt-0 outline-[2px] rounded-sm border border-gray-300 p-1"
                   >
                     {datas.role.map((data, index) => (
                       <option value={data} key={index}>

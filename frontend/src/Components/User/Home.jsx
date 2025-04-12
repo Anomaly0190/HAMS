@@ -5,7 +5,7 @@ import SliderImage from "./SliderImage.jsx";
 
 const Home = () => {
   return (
-    <div className="w-full">
+    <div className="w-full pt-[16vh]">
       <section className="py-10 px-4 md:py-20 w-full min-h-[88vh] flex items-center">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 mx-auto w-full max-w-7xl">
           {/* Left Content */}

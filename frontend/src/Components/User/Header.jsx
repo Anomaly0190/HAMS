@@ -1,13 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo1 from "/logo1.jpg";
-import { HiMenu, HiX } from "react-icons/hi"; // Menu & Close icons
+import { HiMenu, HiX } from "react-icons/hi";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const lastScroll = useRef(0); // ✅ useRef to persist value
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      // Scroll down and past threshold: hide
+      if (currentScroll > lastScroll.current && currentScroll > 100) {
+        setVisible(false);
+      } 
+      // Scroll up: show
+      else {
+        setVisible(true);
+      }
+
+      lastScroll.current = currentScroll; // ✅ update ref
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="w-[98vw] h-[12vh] rounded-xl mt-2 border-t-2 border-blue-300 flex justify-between items-center px-6 mx-auto shadow-blue-500 shadow-lg relative z-50 bg-white">
+    <header className={`fixed top-0 w-[93vw] sm:w-[94vw] md:w-[95vw] lg:w-[98vw] h-[12vh] rounded-xl mt-2 border-t-2 border-blue-300 flex justify-between items-center px-6 mx-3 shadow-blue-500 shadow-lg z-50 bg-white transition-transform duration-300  ${visible ? "translate-y-0" : "-translate-y-full "}`}>
       {/* Logo */}
       <div className="cursor-pointer">
         <img src={logo1} alt="Logo" className="h-[10vh]" />

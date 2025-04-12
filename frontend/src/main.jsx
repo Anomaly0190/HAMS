@@ -17,6 +17,7 @@ import Adminlayout from "./Adminlayout.jsx";
 import Dashboard from "./Components/AdminPanel/Dashboard.jsx";
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,7 +45,8 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />
-      }
+      },
+    
     ]
   }
 ]);
