@@ -1,20 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import loginside from "/loginside.webp";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-
+import toast from "react-hot-toast";
+import { useAuth } from "../Utils/AuthProvider";
 const datas = {
   role: ["User", "Doctor"],
 };
 
 const Login = () => {
+  const navigate = useNavigate(); // ✅ Hook placed inside the component
+  const { user,login } = useAuth();
   const [showPassword, setShowpassword] = useState(false);
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  useEffect(()=>{
+    if(user){
+      setTimeout(() => {
+        navigate("/"); 
+      }, 3000);
+    }
+  },[user,navigate])
+
+  const setData = () => {
+    setLoading(true);
+    const userdata = { username, password };
+    login(userdata);
+
+    setTimeout(() => {
+      toast.success("Login Success");
+    }, 1500);
+    setTimeout(() => {
+      navigate("/"); // ✅ Navigate after delay
+    }, 3000);
+  };
 
   return (
     <>
       <div className="min-h-screen w-full flex justify-center items-center bg-gray-50">
-        <div className="w-[90vw] md:w-[64vw] h-auto md:h-4/5 rounded-lg shadow-2xl flex md:flex-row overflow-hidden bg-white text-black">
-          <div className="w-full hidden md:block md:w-[35vw]">
+        <div className="w-[74vw] md:w-[86vw] lg:w-3/5 h-auto md:h-4/5 rounded-lg shadow-2xl flex md:flex-row overflow-hidden bg-white text-black">
+          <div className="hidden md:block md:w-1/2">
             <img
               src={loginside}
               alt="sideimage"
@@ -23,11 +49,19 @@ const Login = () => {
           </div>
           <div className="w-full md:w-1/2 h-full">
             <div className="bg-white py-4 px-5 md:px-10">
-              <h2 className="text-3xl font-semibold mb-6 mt-4 text-center md:text-left">
+              <h2 className="text-3xl font-semibold mb-6 mt-4 text-center ">
                 <span className="text-[#0A7ABF]">Welcome</span>
-                <span className="text-[#333333]">Back</span>
+                <span className="text-[#333333]"> Back</span>
               </h2>
-              <form className="space-y-3 w-full">
+
+              {/* ✅ Fixed onSubmit here */}
+              <form
+                className="space-y-3 w-full"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setData();
+                }}
+              >
                 <div>
                   <label
                     className="block text-gray-700 font-medium mb-2"
@@ -60,14 +94,16 @@ const Login = () => {
                         </g>
                       </svg>
                       <input
-                        type="email"
-                        placeholder="Enter your email"
+                        type="text"
+                        placeholder="Enter your username"
                         required
                         className="w-full focus:outline-none"
+                        onChange={(e) => setusername(e.target.value)}
                       />
                     </label>
                   </div>
                 </div>
+
                 <div>
                   <label
                     className="block text-gray-700 font-medium mb-2"
@@ -103,6 +139,7 @@ const Login = () => {
                         placeholder="Enter your password"
                         required
                         className="w-full focus:outline-none"
+                        onChange={(e) => setpassword(e.target.value)}
                       />
                       {showPassword ? (
                         <FaEyeSlash
@@ -118,13 +155,10 @@ const Login = () => {
                     </label>
                   </div>
                 </div>
-                <div className="flex w-full my-4  sm:flex-row items-center">
+
+                <div className="flex w-full my-4 sm:flex-row items-center">
                   <label className="mr-2">Are you a</label>
-                  <select
-                    name=""
-                    id=""
-                    className="ml-0 sm:ml-2 mt-2 sm:mt-0 outline-[2px] rounded-sm border border-gray-300 p-1"
-                  >
+                  <select className="ml-0 sm:ml-2 mt-2 sm:mt-0 outline-[2px] rounded-sm border border-gray-300 p-1">
                     {datas.role.map((data, index) => (
                       <option value={data} key={index}>
                         {data}
@@ -132,21 +166,49 @@ const Login = () => {
                     ))}
                   </select>
                 </div>
-                <div className="w-full flex flex-col sm:flex-row sm:justify-end my-4 text-[1rem]">
+
+                {/* <div className="w-full flex flex-col sm:flex-row sm:justify-end my-4 text-[1rem]">
                   <h1>
                     Don't have an Account?{" "}
                     <span className="text-blue-500">
                       <Link to="/register">Register</Link>
                     </span>
                   </h1>
-                </div>
+                </div> */}
+
                 <button
                   type="submit"
                   className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold"
                 >
-                  Login
+                  {loading ? (
+                    // <span className="loading loading-spinner text-success"></span>
+                    <span className="loading loading-dots loading-xl"></span>
+                  ) : (
+                    "Login"
+                  )}
                 </button>
               </form>
+              <div className="mt-6">
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-gray-300"></div>
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="px-2 bg-white text-gray-500">
+                      Don't have an Account?
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <Link
+                    to="/register"
+                    className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  >
+                    Register
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

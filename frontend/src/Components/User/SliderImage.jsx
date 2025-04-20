@@ -21,7 +21,7 @@ function SliderImage() {
   return (
     <div className="slider-container w-full max-w-screen-xl mx-auto px-2 ">
       <Slider {...settings}>
-        {[slider1, slider2, slider3, slider4].map((img, index) => (
+        {[slider1, slider2,  slider4].map((img, index) => (
           <div key={index}>
             <div className="w-full h-[50vh] md:h-[80vh] my-2">
               <img

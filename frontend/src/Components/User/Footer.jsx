@@ -17,7 +17,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-700 mb-3">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-gray-700 mb-3 cursor-pointer">Quick Links</h3>
             <ul className="space-y-2 text-[17px]">
               <li>
                 <Link to="#" className="hover:text-blue-600 transition">
@@ -38,7 +38,7 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="cursor-pointer">
             <h3 className="text-lg font-semibold text-gray-700 mb-3">Services</h3>
             <ul className="space-y-2 text-[17px]">
               <li>
@@ -55,7 +55,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="cursor-pointer">
             <h3 className="text-lg font-semibold text-gray-700 mb-3">Contact</h3>
             <p className="text-[17px] text-gray-600">Email: support@hams.com</p>
             <p className="text-[17px] text-gray-600">Phone: 977 9812821234</p>
@@ -64,7 +64,7 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-gray-200 mt-10 pt-6 text-[17px] text-gray-500 text-center">
+        <div className="border-t border-gray-200 mt-10 pt-6 text-[17px] text-gray-500 text-center cursor-pointer">
           © {new Date().getFullYear()} HAMs. All rights reserved.
         </div>
       </div>
