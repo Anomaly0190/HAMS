@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Header from "./Components/User/Header.jsx";
-import Footer from "./Components/User/Footer.jsx";
+import Header from "./components/Header.jsx";
+import Footer from "./Components/Footer.jsx";
 
 
 const UserLayout = () => {

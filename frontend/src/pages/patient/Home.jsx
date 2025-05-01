@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowUp } from "react-icons/fa";
-import {useAuth } from "../Utils/AuthProvider.jsx";
+import { FaArrowUp,FaArrowRight } from "react-icons/fa";
+import {useAuth } from "../../Utils/AuthProvider.jsx";
 import docimage from "/docimage.jpg";
 import SliderImage from "./SliderImage.jsx";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Home = () => {
   const [visible,setVisible]=useState(false);
@@ -47,10 +48,15 @@ const Home = () => {
               professionals — All in one place.
             </p>
             <Link
-              to="#"
+              to={user?"/bookappointment":"/login"}
               className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition"
             >
-              {user?"Book Appointment Now":"  Login to Book Appointment"}
+              {user?(
+                <div className="flex justify-center items-center gap-2">
+                 Book Appointment Now <FaArrowRightLong/>
+                </div>
+              )
+             :"Login to Book Appointment"}
             
             </Link>
           </div>

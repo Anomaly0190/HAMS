@@ -116,7 +116,7 @@ const Header = () => {
             <Link
               to="/"
               onClick={() => setShowMenu(false)}
-              className="hover:underline"
+              className="hover:underline "
             >
               Find a Doctor
             </Link>

@@ -7,16 +7,17 @@ import { Toaster } from "react-hot-toast";
 
 // UserPanel
 import Userlayout from "./Userlayout.jsx";
-import Home from "./Components/User/Home.jsx";
-import Login from "./Components/User/Login.jsx";
-import Register from "./Components/User/Register.jsx";
+import Home from "./pages/patient/Home.jsx";
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
 
 // AdminPanel
 import Adminlayout from "./Adminlayout.jsx";
-import Dashboard from "./Components/AdminPanel/Dashboard.jsx";
-import { AuthProvider } from "./Components/Utils/AuthProvider.jsx";
+import Dashboard from "./pages/doctor/Dashboard.jsx";
+import { AuthProvider } from "./Utils/AuthProvider.jsx";
 
-import ProtectedRoutes from "./Components/Utils/ProtectedRoutes.jsx";
+import ProtectedRoutes from "./Utils/ProtectedRoutes.jsx";
+import BookAppointment from "./pages/patient/BookAppointment.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/bookappointment",
+        element: <BookAppointment />,
       },
     ],
   },

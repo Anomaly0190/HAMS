@@ -3,6 +3,7 @@ import loginside from "/loginside.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import toast from "react-hot-toast";
+import axios from "axios";
 import { useAuth } from "../Utils/AuthProvider";
 const datas = {
   role: ["User", "Doctor"],
@@ -10,30 +11,45 @@ const datas = {
 
 const Login = () => {
   const navigate = useNavigate(); // ✅ Hook placed inside the component
-  const { user,login } = useAuth();
+  const { user, login } = useAuth();
   const [showPassword, setShowpassword] = useState(false);
-  const [username, setusername] = useState("");
+  const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [loading, setLoading] = useState(false);
-  useEffect(()=>{
-    if(user){
+  useEffect(() => {
+    if (user) {
       setTimeout(() => {
-        navigate("/"); 
+        navigate("/");
       }, 3000);
     }
-  },[user,navigate])
+  }, [user, navigate]);
 
-  const setData = () => {
-    setLoading(true);
-    const userdata = { username, password };
-    login(userdata);
-
-    setTimeout(() => {
-      toast.success("Login Success");
-    }, 1500);
-    setTimeout(() => {
-      navigate("/"); // ✅ Navigate after delay
-    }, 3000);
+  const setLogin = async () => {
+    try {
+      setLoading(true);
+      const userdata = { email, password };
+      const res = await axios.post("http://localhost:3000/user/login", {
+        email,
+        password,
+      });
+      if (res.status == 200) {
+        login(userdata);
+        setTimeout(() => {
+          toast.success("Login Success");
+        }, 1500);
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      } else {
+        setLoading(false);
+        toast.error("Invalid Credentials");
+      }
+    } catch (error) {
+      if (error.response) toast.error("Invalid Credentials.");
+      else if (error.request) toast.error("Server not started.");
+      else toast.error("Error occured in server.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -59,7 +75,7 @@ const Login = () => {
                 className="space-y-3 w-full"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  setData();
+                  setLogin();
                 }}
               >
                 <div>
@@ -98,7 +114,7 @@ const Login = () => {
                         placeholder="Enter your username"
                         required
                         className="w-full focus:outline-none"
-                        onChange={(e) => setusername(e.target.value)}
+                        onChange={(e) => setemail(e.target.value)}
                       />
                     </label>
                   </div>
@@ -167,18 +183,9 @@ const Login = () => {
                   </select>
                 </div>
 
-                {/* <div className="w-full flex flex-col sm:flex-row sm:justify-end my-4 text-[1rem]">
-                  <h1>
-                    Don't have an Account?{" "}
-                    <span className="text-blue-500">
-                      <Link to="/register">Register</Link>
-                    </span>
-                  </h1>
-                </div> */}
-
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold"
+                  className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold cursor-pointer"
                 >
                   {loading ? (
                     // <span className="loading loading-spinner text-success"></span>

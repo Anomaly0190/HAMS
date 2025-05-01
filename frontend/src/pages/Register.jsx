@@ -1,9 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link ,useNavigate} from "react-router-dom";
 import { useAuth } from "../Utils/AuthProvider.jsx";
+import toast from "react-hot-toast";
+import axios from "axios";
 const Register = () => {
+  const [loading, setLoading] = useState(false);
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
   const navigate=useNavigate(); 
   const {user}=useAuth();
+ 
+
   useEffect(()=>{
     if(user){
       setTimeout(()=>{
@@ -12,6 +20,24 @@ const Register = () => {
     }
    
   },[user])
+
+  const handleSubmit=async()=>{
+    setLoading(true);
+    try {
+      const userdata={name,email,password}
+      const res=await axios.post("http://localhost:3000/user/register",userdata);
+      if(res.status==201){
+        toast.success(res.data.message);
+        setTimeout(()=>{
+          navigate("/login");
+        },2000)
+       
+      }
+    } catch (error) {
+      console.log("Error occured in register page"+error);
+      setLoading(false)
+    }
+  }
   return (
     <div className="min-h-screen bg-blue-100 flex flex-col justify-center py-3 sm:px-6 ">
       <div className="sm:mx-auto sm:w-full sm:max-w-md mt-2">
@@ -22,7 +48,10 @@ const Register = () => {
 
       <div className="mt-5 sm:mx-auto w-4/5 mx-auto sm:w-full sm:max-w-md">
         <div className=" bg-white py-8 px-4  sm:rounded-lg sm:px-10  shadow-black shadow-2xl">
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={(e)=>{
+            e.preventDefault();
+            handleSubmit();
+          }}>
             <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">
               <div>
                 <label
@@ -37,6 +66,7 @@ const Register = () => {
                     id="firstName"
                     name="firstName"
                     className="block w-full shadow-sm sm:text-sm rounded-md border p-2"
+                    onChange={(e)=>setName(e.target.value)}
                   />
                 </div>
               </div>
@@ -72,6 +102,7 @@ const Register = () => {
                   id="email"
                   name="email"
                   className="block w-full shadow-sm sm:text-sm rounded-md border p-2"
+                  onChange={(e)=>setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -90,6 +121,7 @@ const Register = () => {
                     id="password"
                     name="password"
                     className="block w-full shadow-sm sm:text-sm rounded-md border p-2"
+                    onChange={(e)=>setPassword(e.target.value)}
                   />
                 </div>
               </div>
@@ -172,9 +204,15 @@ const Register = () => {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent bg-blue-600 rounded-md shadow-sm text-sm font-medium text-white "
+                className="w-full flex justify-center py-2 px-4 border border-transparent bg-blue-600 rounded-md shadow-sm text-sm font-medium text-white cursor-pointer"
               >
-                Register
+                 {loading ? (
+                    <span className="loading loading-spinner text-success"></span>
+                    // <span className="loading loading-dots loading-xl"></span>
+                  ) : (
+                    "Register"
+                  )}
+           
               </button>
             </div>
           </form>
