@@ -2,10 +2,7 @@
 import mongoose from "mongoose";
 
 // 🔗 Connecting to MongoDB
-mongoose.connect("your_mongo_uri", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect("your_mongo_url");
 
 // ✅ Define Schema
 const userSchema = new mongoose.Schema({
