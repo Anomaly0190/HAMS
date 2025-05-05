@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowUp,FaArrowRight } from "react-icons/fa";
-import {useAuth } from "../../Utils/AuthProvider.jsx";
+import { FaArrowUp } from "react-icons/fa";
+import { useAuth } from "../../Utils/AuthProvider.jsx";
 import docimage from "/docimage.jpg";
 import SliderImage from "./SliderImage.jsx";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 const Home = () => {
-  const [visible,setVisible]=useState(false);
- const {user}=useAuth();
+  const [visible, setVisible] = useState(false);
+  const { user } = useAuth();
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setVisible(currentScrollY > 100); 
+      setVisible(currentScrollY > 100);
     };
-  
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
+
   const scrolltotop = () => {
     window.scrollTo({
       top: 0,
@@ -26,11 +26,12 @@ const Home = () => {
     });
   };
 
-  
   return (
     <div className="w-full pt-[16vh]">
       <div
-        className={`fixed bottom-4 right-4 bg-gray-300 p-2 rounded-sm shadow-2xl ${visible?"block":"hidden"}`}
+        className={`fixed bottom-4 right-4 bg-gray-300 p-2 rounded-sm shadow-2xl ${
+          visible ? "block" : "hidden"
+        }`}
         onClick={scrolltotop}
       >
         <FaArrowUp />
@@ -48,16 +49,17 @@ const Home = () => {
               professionals — All in one place.
             </p>
             <Link
-              to={user?"/bookappointment":"/login"}
+              to={user ? "/bookappointment" : "/login"}
               className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition"
             >
-              {user?(
+              {user ? (
                 <div className="flex justify-center items-center gap-2">
-                 Book Appointment Now <FaArrowRightLong/>
+                  Book Appointment Now
+                  <FaArrowRightLong />
                 </div>
-              )
-             :"Login to Book Appointment"}
-            
+              ) : (
+                "Login to Book Appointment"
+              )}
             </Link>
           </div>
 

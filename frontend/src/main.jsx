@@ -18,6 +18,7 @@ import { AuthProvider } from "./Utils/AuthProvider.jsx";
 
 import ProtectedRoutes from "./Utils/ProtectedRoutes.jsx";
 import BookAppointment from "./pages/patient/BookAppointment.jsx";
+import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
               </ProtectedRoutes>
             ),
           },
+          {
+            path:"admindashboard",
+            element:<AdminDashboard/>
+          }
         ],
       },
       {
